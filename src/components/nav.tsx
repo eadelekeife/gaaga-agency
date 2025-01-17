@@ -5,7 +5,6 @@ import Link from "next/link";
 
 import Image from "next/image";
 import LogoBlackImg from "../assets/images/sec_logo.svg";
-import { IoIosArrowDropup, IoIosArrowDropdown } from "react-icons/io";
 // import MenuSVG from "../assets/images/menu.svg";
 // import LogoWhiteImg from "../assets/images/logo-white.svg";
 import { useState } from "react";

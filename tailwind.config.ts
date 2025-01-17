@@ -11,7 +11,11 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        accent: "#FF3D00"
       },
+      fontFamily: {
+        Abnes: 'Abnes'
+      }
     },
   },
   plugins: [],

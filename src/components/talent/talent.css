@@ -1,0 +1,122 @@
+.talent-hero-img {
+    position: relative;
+}
+
+.talent-hero-link {
+    position: absolute;
+    bottom: 5%;
+    left: 0%;
+    width: 100%;
+}
+
+.bottom.panel {
+    padding: 0px 40px 30px;
+    border-radius: 0px 0px 20px 20px;
+}
+
+.panel {
+    padding: 0px 40px 10px;
+    border-radius: 0px;
+    text-align: center;
+    border: 2px solid #484848;
+    background: rgba(72, 72, 72, .35);
+    border-top: none;
+    border-bottom: none;
+}
+
+.panel.bottom.info {
+    border-bottom: 2px solid #484848;
+}
+
+.panel .panel-item {
+    color: #C5C5C5;
+    border-bottom: 2px solid rgba(72, 72, 72, 1);
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+
+.panel.list .panel-item {
+    color: #fff;
+    text-align: left;
+}
+
+.panel p {
+    text-align: left;
+    color: #CBCBCB;
+}
+
+.panel.list {
+    background: none;
+    border: none;
+}
+
+.panel h4 {
+    margin-bottom: 20px;
+    color: #FF540B;
+    text-align: left;
+    visibility: hidden;
+}
+
+.panel h4.mb-0 {
+    margin-bottom: 0px;
+}
+
+.brand h4 {
+    color: #fff;
+}
+
+.panel.list h4 {
+    visibility: visible;
+}
+
+.panel.top {
+    text-align: center;
+}
+
+.panel.top h4 {
+    visibility: visible;
+    color: #FFF;
+    text-align: center;
+}
+
+.panel.top p {
+    text-align: center;
+}
+
+.panel.top h5 {
+    color: #FF540B;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.panel.top h5 span {
+    color: #CBCBCB;
+}
+
+.top.panel {
+    padding: 30px 40px 0px;
+    border-radius: 20px 20px 0px 0px;
+    border-top: 2px solid #484848;
+}
+
+.bottom.top.panel {
+    padding: 30px 40px 30px;
+}
+
+.brand {
+    background: #FF540B;
+    border-radius: 8px 0px 0px 8px;
+}
+
+.pricing-list-display .contain {
+    padding-left: 5%;
+}
+
+.payment-plan {
+    padding-right: 5%;
+}
+
+.top-right {
+    transform: rotate(-40deg);
+}

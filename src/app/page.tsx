@@ -1,4 +1,3 @@
-import HeroImg from "@/assets/images/gaaga-white.png";
 import Nav from "@/components/nav";
 
 export default function Home() {

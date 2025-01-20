@@ -4,9 +4,6 @@ import LayoutDisplay from "@/components/layout"
 import Image from "next/image";
 
 import ProductionHero from "@/assets/images/productions/hero.png";
-import ArrowImage from "@/assets/images/arrow.png";
-
-import { PricingPlans } from "@/components/talent/pricing";
 import PageTitle from "@/components/page-title";
 
 import ArrowRightDesign from "@/assets/images/talent/arrow-design.svg";
@@ -21,9 +18,7 @@ import Img5 from "@/assets/images/home/brands/_5.svg";
 import RightImg from "@/assets/images/icons/right.svg";
 import LeftImg from "@/assets/images/icons/left.svg";
 
-import Asteriks from "@/assets/images/icons/asteriks.svg";
-
-import { Swiper, SwiperSlide, useSwiper } from 'swiper/react';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 
 

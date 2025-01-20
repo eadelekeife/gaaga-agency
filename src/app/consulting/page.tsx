@@ -3,19 +3,12 @@
 import ManCamera from "@/assets/images/consulting/what_we_do.png";
 
 import GaagaLogo from "@/assets/images/gaaga-white.png";
-import MusicImg from "@/assets/images/consulting/music.svg";
-import CreativeImg from "@/assets/images/consulting/creative.svg";
-import CommercialImg from "@/assets/images/consulting/commercial.svg";
-import ContentImg from "@/assets/images/consulting/content.svg";
-import InfluencerImg from "@/assets/images/consulting/influencer.svg";
-import EventImg from "@/assets/images/consulting/event.svg";
 
 import Talent from "@/assets/images/home/talent.svg";
-import Content from "@/assets/images/home/content.svg";
 import Consulting from "@/assets/images/home/consulting.svg";
 import Arrow from "@/assets/images/home/arrow-slide.svg";
 
-import { Swiper, SwiperSlide, useSwiper } from 'swiper/react';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 
 import Image from "next/image";

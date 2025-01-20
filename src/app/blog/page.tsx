@@ -17,8 +17,8 @@ const ProjectPage = () => {
                                 <div>
                                     <img src={BlogImg2.src} alt="project" className="mb-5 w-full h-full" width={0} height={0} />
                                     <div>
-                                        <h6 className="font-black mb-5"><span className="text-[#FD532F]">Guides / </span><span className="text-[#878787]">November 3, 2024</span></h6>
-                                        <h4 className="mb-5 text-3xl font-bold">How to Do Panning Photography</h4>
+                                        <h6 className="font-singolare font-black mb-5"><span className="text-[#FD532F]">Guides / </span><span className="text-[#878787]">November 3, 2024</span></h6>
+                                        <h4 className="font-singolare mb-5 text-3xl font-bold">How to Do Panning Photography</h4>
                                         <p className="mb-5 text-sm leading-loose w-[90%]">Gallery blocks have two settings: the number of columns, and whether or not images should be cropped. The default
                                             number of columns is three, and the maximum number of columns is eight. Below is a three column gallery at full
                                             width, with cropped images.</p>
@@ -30,8 +30,8 @@ const ProjectPage = () => {
                                 <div className="mt-15">
                                     <img src={BlogImg.src} alt="project" className="mb-5 w-full h-full" width={0} height={0} />
                                     <div>
-                                        <h6 className="font-black mb-5"><span className="text-[#FD532F]">Guides / </span><span className="text-[#878787]">November 3, 2024</span></h6>
-                                        <h4 className="mb-5 text-3xl font-bold">How to Do Panning Photography</h4>
+                                        <h6 className="font-singolare font-black mb-5"><span className="text-[#FD532F]">Guides / </span><span className="text-[#878787]">November 3, 2024</span></h6>
+                                        <h4 className="font-singolare mb-5 text-3xl font-bold">How to Do Panning Photography</h4>
                                         <p className="mb-5 text-sm leading-loose w-[90%]">Gallery blocks have two settings: the number of columns, and whether or not images should be cropped. The default
                                             number of columns is three, and the maximum number of columns is eight. Below is a three column gallery at full
                                             width, with cropped images.</p>

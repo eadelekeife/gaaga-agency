@@ -5,6 +5,7 @@
 import React, { useState } from "react";
 
 import ArrowRight from "@/assets/images/icons/arrow-right-white.svg";
+import Image from "next/image";
 
 // import axios from "axios";
 
@@ -96,22 +97,22 @@ const ContactUsForm = () => {
             <div>
                 <div className="small">
                     <form action="">
-                        <div className="form-group mb-10">
-                            <label className="block mb-10 text-black" htmlFor="brandName">Name</label>
-                            <input type="text" className="bg-transparent border-0 border-b-s w-[100%] border-b border-[#CFCFCF]" id="name" value={contactFormData.brandName} name="brandName" onChange={handleFormChange} />
+                        <div className="form-group mb-5">
+                            <label className="block text-black" htmlFor="brandName">Name</label>
+                            <input type="text" className="bg-transparent py-5 tdxt-black border-0 border-b-s w-[100%] border-b border-[#CFCFCF]" id="name" value={contactFormData.brandName} name="brandName" onChange={handleFormChange} />
                         </div>
-                        <div className="form-group mb-10">
-                            <label className="block mb-10 text-black" htmlFor="email">Brand</label>
-                            <input type="text" className="bg-transparent border-0 border-b-s w-[100%] border-b border-[#CFCFCF]" id="brand" value={contactFormData.email} name="email" onChange={handleFormChange} />
+                        <div className="form-group mb-5">
+                            <label className="block text-black" htmlFor="email">Brand</label>
+                            <input type="text" className="bg-transparent py-5 tdxt-black border-0 border-b-s w-[100%] border-b border-[#CFCFCF]" id="brand" value={contactFormData.email} name="email" onChange={handleFormChange} />
                         </div>
                         <div className="form-group">
-                            <label className="block mb-10 text-black" htmlFor="portfolio">Email</label>
-                            <input type="text" className="bg-transparent border-0 border-b-s w-[100%] border-b border-[#CFCFCF]" id="portfolio" value={contactFormData.portfolio} name="portfolio" onChange={handleFormChange} />
+                            <label className="block text-black" htmlFor="portfolio">Email</label>
+                            <input type="text" className="bg-transparent py-5 tdxt-black border-0 border-b-s w-[100%] border-b border-[#CFCFCF]" id="portfolio" value={contactFormData.portfolio} name="portfolio" onChange={handleFormChange} />
                         </div>
                         <div className="flex justify-between">
                             <div></div>
-                            <button className="flex border-2 border-black text-black items-center gap-3 py-4 px-7 block w-max mt-7">Send
-                                <div className="bg-black w-10 h-10 flex items-center justify-center rounded-full"><img width={0} height={0} src={ArrowRight.src} alt="arrow right" /></div></button>
+                            <button className="flex border-2 border-black text-black items-center gap-3 py-3 px-8 block w-max mt-7">Send
+                                <div className="bg-black w-8 h-8 flex items-center justify-center rounded-full"><Image width={0} height={0} src={ArrowRight} alt="arrow right" /></div></button>
                             {/* {
                                 sendingMail ?
                                     <button disabled className="flex border border-black items-center gap-3 py-4 px-7 block w-max rounded-full mt-7">Sending

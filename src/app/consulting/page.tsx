@@ -1,3 +1,5 @@
+"use client";
+
 import ManCamera from "@/assets/images/consulting/what_we_do.png";
 
 import GaagaLogo from "@/assets/images/gaaga-white.png";
@@ -8,11 +10,33 @@ import ContentImg from "@/assets/images/consulting/content.svg";
 import InfluencerImg from "@/assets/images/consulting/influencer.svg";
 import EventImg from "@/assets/images/consulting/event.svg";
 
+import Talent from "@/assets/images/home/talent.svg";
+import Content from "@/assets/images/home/content.svg";
+import Consulting from "@/assets/images/home/consulting.svg";
+import Arrow from "@/assets/images/home/arrow-slide.svg";
+
+import { Swiper, SwiperSlide, useSwiper } from 'swiper/react';
+import 'swiper/css';
+
+import Image from "next/image";
+import Link from "next/link";
+
 // import LayoutDisplay from "@/components/layout";
 import Footer from "@/components/footer";
 import Nav from "@/components/nav";
 
 const AboutUsPage = () => {
+    const breakpoints = {
+        0: {
+            slidesPerView: 1
+        },
+        600: {
+            slidesPerView: 1
+        },
+        1000: {
+            slidesPerView: 3
+        }
+    }
     return (
         <div>
             <Nav displayType="absolute" />
@@ -27,7 +51,7 @@ const AboutUsPage = () => {
                     and abroad. We are driven by a sincere desire to use entertainment and pop culture to assist our clients in
                     succeeding in the new market.</p>
                 <div className="mt-6">
-                    <img src={ManCamera.src} alt="man with camera w-full" />
+                    <img src={ManCamera.src} alt="man with camera" className="w-full" />
                 </div>
             </div>
             <div className="px-20 mt-32">
@@ -37,51 +61,91 @@ const AboutUsPage = () => {
                         Nigeria. Over time, Larry has developed partnerships that
                         are profitable to both parties.</p>
                 </div>
-                <div className="grid grid-cols-3 gap-10 mt-24">
-                    <div className="border-solid border-4 px-8 py-10 border-[#FD532F]">
-                        <img src={MusicImg.src} alt="music logo" className="mx-auto block mb-10" />
-                        <h4 className="text-3xl text-white font-bold text-center mb-5">Music Placement</h4>
-                        <p className="text-white leading-relaxed">This involves strategically integrating music into marketing campaigns and brand narratives. Gaaga Agency identifies and aligns
-                            artists and their music that resonate with the brand&apos;s target audience and campaign objectives.</p>
-                    </div>
-                    <div className="border-solid border-4 px-8 py-10 border-[#FD532F] bg-[#FD532F]">
-                        <img src={CreativeImg.src} alt="music logo" className="mx-auto block mb-10" />
-                        <h4 className="text-3xl text-white font-bold text-center mb-5">Creative Strategy</h4>
-                        <p className="text-white leading-relaxed">Crafting Your Brand&apos;s Story - Our creative strategies are designed to weave your brand&apos;s narrative into the vibrant
-                            fabric of pop culture, ensuring a lasting impression.</p>
-                    </div>
-                    <div className="border-solid border-4 px-8 py-10 border-[#FD532F]">
-                        <img src={CommercialImg.src} alt="music logo" className="mx-auto block mb-10" />
-                        <h4 className="text-3xl text-white font-bold text-center mb-2">Commercial Production</h4>
-                        <p className="text-white leading-relaxed">From concept to final cut, our commercial production team crafts visually stunning content that elevates
-                            your brand&apos;s message.
-                            From scripting to post-production, our commercial production service handles every aspect of creating
-                            compelling visual content. We focus on storytelling that aligns with your brand&apos;s identity and goals, using high-quality
-                            production techniques.
-                        </p>
-                    </div>
-                    <div className="border-solid border-4 px-8 py-10 border-[#FD532F]">
-                        <img src={ContentImg.src} alt="music logo" className="mx-auto block mb-10" />
-                        <h4 className="text-3xl text-white font-bold text-center mb-5">Content Marketing</h4>
-                        <p className="text-white leading-relaxed">We develop and distribute valuable content that attracts, engages, and retains your target
-                            audience, driving brand loyalty.
-                            We create and distribute valuable and relevant content to attract and retain a clearly defined audience. Our content
-                            marketing strategy is aligned with your brand goals and is designed to drive profitable customer action.</p>
-                    </div>
-                    <div className="border-solid border-4 px-8 py-10 border-[#FD532F]">
-                        <img src={InfluencerImg.src} alt="music logo" className="mx-auto block mb-10" />
-                        <h4 className="text-3xl text-white font-bold text-center mb-5">Influencer Marketing</h4>
-                        <p className="text-white leading-relaxed">Gaaga Agency collaborates with influencers across various platforms to promote
-                            brands. The process involves identifying influencers whose audience demographics and interests align with the brand, and
-                            creating campaigns that leverage the influencer&apos;s credibility and reach.</p>
-                    </div>
-                    <div className="border-solid border-4 px-8 py-10 border-[#FD532F]">
-                        <img src={EventImg.src} alt="music logo" className="mx-auto block mb-10" />
-                        <h4 className="text-3xl text-white font-bold text-center mb-2">Event Production and Management</h4>
-                        <p className="text-white leading-relaxed">Gaaga Agency specializes in conceptualizing and executing events that showcase
-                            talents and align with brand messages. This includes managing logistics, production, and post-event activities to
-                            create memorable experiences for both the audience and participating talents.
-                        </p>
+                <div className="pt-20 md:pt-32">
+                    <div className="service-bar">
+                        <Swiper
+                            spaceBetween={20} breakpoints={breakpoints}
+                        >
+                            <SwiperSlide key={1}>
+                                <div className="">
+                                    <div>
+                                        <Image width={0} height={0} src={Talent} alt="musician posing for a picture" style={{ width: "100%", height: "100%" }} />
+                                    </div>
+                                    <div>
+                                        <Link href="/contact/brand">
+                                            <div className="flex gap-4 items-start mt-6">
+                                                <div>
+                                                    <Image src={Arrow} alt="link" width={300} height={300} />
+                                                </div>
+                                                <div>
+                                                    <h4 className="text-2xl text-light-header">MUSIC PLACEMENT</h4>
+                                                    <p className="text-light-text leading-8 mt-3 w-11/12">This service focuses on scouting, nurturing, and managing talents (artists, actors, performers, etc.) for
+                                                        collaborations with brands. Gaaga Agency works on enhancing the talent&apos;s visibility, aligning them with
+                                                        suitable brand endorsements, and managing contracts and collaborations.</p>
+                                                </div>
+                                            </div>
+                                        </Link>
+                                    </div>
+                                </div>
+                            </SwiperSlide>
+                            <SwiperSlide key={2}>
+                                <div>
+                                    <div>
+                                        <div className="services-link px-10 py-8 md:p-10 flex items-center justify-center rounded-3xl mb-3">
+                                            <div>
+                                                <h2 className="text-3xl md:text-6xl">GAAGA</h2>
+                                            </div>
+                                            {/* <div>
+                                                <Image width={0} height={0} src={Arrow} alt="link" />
+                                            </div> */}
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <Image width={0} height={0} src={Consulting} alt="celebrity posing for a picture" style={{ width: "100%", height: "100%" }} />
+                                    </div>
+                                    <div>
+                                        <Link href="/contact/brand">
+                                            <div className="flex gap-4 items-start mt-6">
+                                                <div>
+                                                    <Image src={Arrow} alt="link" width={300} height={300} />
+                                                </div>
+                                                <div className="">
+                                                    <h4 className="text-2xl text-light-header">CREATIVE STRATEGY</h4>
+                                                    <p className="text-light-text leading-8 mt-3 w-11/12">At Gaaga Agency, we offer personalized consulting services to
+                                                        help talents navigate the complexities of the entertainment industry. Our consulting covers career
+                                                        planning, image branding, negotiation tactics, and market positioning. We provide insights and strategies
+                                                        to help you maximize your potential and reach your career goals.</p>
+                                                </div>
+                                            </div>
+                                        </Link>
+                                    </div>
+                                </div>
+                            </SwiperSlide>
+                            <SwiperSlide key={3}>
+                                <div>
+                                    <div>
+                                        <Image width={0} height={0} src={Talent} alt="man holding a speaker" style={{ width: "100%", height: "100%" }} />
+                                    </div>
+                                    <div>
+                                        <Link href="/talent">
+                                            <div className="flex gap-4 items-start mt-6">
+                                                <div>
+                                                    <Image src={Arrow} alt="link" width={300} height={300} />
+                                                </div>
+                                                <div className="">
+                                                    <h4 className="text-2xl text-light-header">COMMERCIAL PRODUCTION</h4>
+                                                    <p className="text-light-text mt-3 leading-8">Understanding the challenges of content creation, Gaaga Agency
+                                                        provides comprehensive content production services for our talents. This includes
+                                                        ideation, scripting, filming, editing, and publishing support. Whether it&apos;s for social media, YouTube, or
+                                                        other platforms, our team ensures that your content is not only high-quality but also aligns with your
+                                                        personal brand and appeals to your audience.</p>
+                                                </div>
+                                            </div>
+                                        </Link>
+                                    </div>
+                                </div>
+                            </SwiperSlide>
+                        </Swiper>
                     </div>
                 </div>
             </div>

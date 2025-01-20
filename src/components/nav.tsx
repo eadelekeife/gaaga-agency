@@ -30,7 +30,7 @@ export default function Nav(props: NavigationInterface) {
     const toggleDisplayOffering = () => setDisplayOffering(!displayOffering);
 
     return (
-        <div className={`navigation ${props.bgColor ? "dark" : ""} ${props.displayType === "absolute" ? `${props.displayType} top-0 w-full` : "relative"}`}
+        <div className={`navigation pt-7 ${props.bgColor ? "dark" : ""} ${props.displayType === "absolute" ? `${props.displayType} top-0 w-full` : "relative"}`}
             style={{ zIndex: 10000 }}>
             <div className="px-20">
                 <div className="flex justify-between py-4 items-center">
@@ -41,8 +41,8 @@ export default function Nav(props: NavigationInterface) {
                     </div>
                     <div>
                         <div onClick={toggleDisplayNavigation} className="cursor-pointer z-10 relative">
-                            <div className={`nav-bar w-[5rem] mb-5 block h-[5px] rounded-xl bg-white top ${displayDrawer ? "slant" : ""}`}></div>
-                            <div className={`nav-bar w-[5rem] h-[5px] block rounded-xl bg-white bottom ${displayDrawer ? "slant" : ""}`}></div>
+                            <div className={`nav-bar w-[4rem] mb-5 block h-[4px] rounded-xl bg-white top ${displayDrawer ? "slant" : ""}`}></div>
+                            <div className={`nav-bar w-[4rem] h-[4px] block rounded-xl bg-white bottom ${displayDrawer ? "slant" : ""}`}></div>
                         </div>
                         {/* <Image src={MenuSVG} alt="logo" width={0} height={0} className="logo w-full h-full" /> */}
                     </div>
@@ -55,7 +55,7 @@ export default function Nav(props: NavigationInterface) {
                             <Link href="/" className="text-white text-center font-Abnes text-5xl">Home</Link>
                         </li>
                         <li>
-                            <Link href="/" className="text-white text-center font-Abnes text-5xl">About</Link>
+                            <Link href="/about" className="text-white text-center font-Abnes text-5xl">About</Link>
                         </li>
                         <li>
                             <Link href="#" onClick={toggleDisplayOffering} className="flex items-start gap-10 text-white text-center font-Abnes">
@@ -74,19 +74,19 @@ export default function Nav(props: NavigationInterface) {
                                         <Link href="/" className="text-2xl leading-loose font-Abnes text-white text-opacity-70 mb-5 block">Corporate</Link>
                                     </li>
                                     <li>
-                                        <Link href="/" className="text-2xl mb-5 leading-loose font-Abnes text-white text-opacity-70 block">Production</Link>
+                                        <Link href="/production" className="text-2xl mb-5 leading-loose font-Abnes text-white text-opacity-70 block">Production</Link>
                                     </li>
                                     <li>
-                                        <Link href="/" className="text-2xl leading-loose font-Abnes text-white text-opacity-70 block">Talent</Link>
+                                        <Link href="/talent" className="text-2xl leading-loose font-Abnes text-white text-opacity-70 block">Talent</Link>
                                     </li>
                                 </ul>
                             </div>
                         </li>
                         <li>
-                            <Link href="/" className="text-white font-Abnes text-center text-5xl">Project</Link>
+                            <Link href="/project" className="text-white font-Abnes text-center text-5xl">Project</Link>
                         </li>
                         <li>
-                            <Link href="/" className="text-white font-Abnes text-center text-5xl">Blog</Link>
+                            <Link href="/blog" className="text-white font-Abnes text-center text-5xl">Blog</Link>
                         </li>
                         {/* <li>
                             <Link href="/consulting" className="text-white font-Abnes text-center text-5xl">Consulting</Link>

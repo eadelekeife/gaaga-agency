@@ -5,32 +5,33 @@ import ArrowStyled from "@/assets/images/icons/arrow-styled-black.svg";
 import CircleImg from "@/assets/images/circle.svg";
 
 import ContactUsForm from "@/components/contact/form";
+import Image from "next/image";
 
 const ContactUs = () => {
 
     return (
         <div className="bg-white">
             <Nav />
-            <div className="px-32">
+            <div className="px-32 pt-28">
                 <div className="flex flex-col items-center md:grid grid-cols-2 gap-20 mt-30">
                     <div>
-                        <div className="flex items-center gap-2">
-                            <h2 className="text-5xl md:text-9xl text-black">LET&apos;S</h2>
+                        <div className="flex items-center gap-6 mb-10">
+                            <h2 className="text-5xl md:text-7xl text-black">LET&apos;S</h2>
                             <div>
-                                <img width={0} height={0} src={CircleImg.src} alt="circle" />
+                                <Image width={0} height={0} src={CircleImg} alt="circle" />
                             </div>
                         </div>
-                        <div className="flex items-center pl-6">
+                        <div className="flex items-end pl-3 mb-10">
                             <div>
-                                <img width={0} height={0} src={ArrowStyled.src} alt="styled arrow" style={{ width: "auto", height: "7rem" }} />
+                                <Image width={0} height={0} src={ArrowStyled} alt="styled arrow" />
                             </div>
                             <div>
-                                <h2 className="text-5xl md:text-9xl text-black">GET IN</h2>
+                                <h2 className="text-5xl md:text-7xl text-black">GET IN</h2>
                             </div>
                         </div>
                         <div className="flex">
                             <div>
-                                <h2 className="text-5xl md:text-9xl text-black">TOUCH</h2>
+                                <h2 className="text-5xl md:text-7xl text-black">TOUCH</h2>
                             </div>
                             <div>
                             </div>

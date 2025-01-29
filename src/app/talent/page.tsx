@@ -14,6 +14,8 @@ import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
+import { Swiper as SwiperType } from 'swiper';
+
 import { useRef, useState } from "react";
 
 const TalentPage = () => {
@@ -30,7 +32,7 @@ const TalentPage = () => {
     }
 
     const [activeIndex, setActiveIndex] = useState<number>(0);
-    const swiperRef = useRef<any>(null);
+    const swiperRef = useRef<SwiperType | null>(null);
 
     const handleDotClick = (index: number) => {
         if (swiperRef.current) {

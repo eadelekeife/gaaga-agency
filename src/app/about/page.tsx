@@ -364,14 +364,14 @@ const AboutUsPage = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="visibility-company-slider mt-32">
+                    <div className="px-20 visibility-company-slider mt-32">
                         <div className="company-box">
                             <Swiper
                                 onSwiper={(swiper) => {
                                     swiperRef.current = swiper;
                                 }}
                                 initialSlide={4} centeredSlides={true} loop
-                                spaceBetween={80} breakpoints={breakpoints}>
+                                spaceBetween={-100} breakpoints={breakpoints}>
                                 <SwiperSlide key={1}>
                                     <div>
                                         <div className="visibility-company-tab bigger">

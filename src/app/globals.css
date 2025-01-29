@@ -349,8 +349,8 @@ h6 {
 
 .visibility-company-tab {
   border: 2px solid #B6B6B6;
-  height: 120px;
-  width: 120px;
+  height: 150px;
+  width: 150px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -377,11 +377,15 @@ h6 {
   height: 3.5rem;
 }
 
+.visibility-company-slider .swiper-slide-active.swiper-slide {
+  margin-left: -20px;
+}
+
 .visibility-company-slider .swiper-slide-active .visibility-company-tab {
   background: #FD532F;
   border: 1px solid #FD532F;
-  height: 180px;
-  width: 180px;
+  height: 200px;
+  width: 200px;
 }
 
 .swiper-wrapper {
@@ -414,12 +418,14 @@ h6 {
 }
 
 .visibility-company-slider .slider-controller {
-  height: 150px;
+  height: 200px;
   width: 150px;
   display: flex;
   align-items: center;
   justify-content: center;
   position: absolute;
+  z-index: 100000;
+  background: #1F1F1F;
 }
 
 .visibility-company-slider .slider-controller button {
@@ -443,7 +449,7 @@ h6 {
 }
 
 .company-box {
-  width: calc(100% - 300px);
+  /* width: calc(100% - 300px); */
   margin: 0px auto;
   display: block;
 }

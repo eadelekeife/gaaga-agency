@@ -119,7 +119,7 @@ const AboutUsPage = () => {
                             </div>
                         </div>
                     </div>
-                    <Image src={AbtImg} alt="talent" className="mt-10 w-full h-full object-cover object-center" />
+                    <Image src={AbtImg} alt="talent" className="mt-10 w-full h-[40rem] object-cover object-center" />
                     <div className="px-20">
                         <div className="mt-20">
                             <div className="w-[90%] mx-auto px-5 mt-15">

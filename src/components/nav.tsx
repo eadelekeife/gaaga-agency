@@ -55,7 +55,7 @@ export default function Nav(props: NavigationInterface) {
                             <Link href="/" className="text-white text-center font-Abnes text-5xl">Home</Link>
                         </li>
                         <li>
-                            <Link href="/about" className="text-white text-center font-Abnes text-5xl">About</Link>
+                            <Link href="/" className="text-white text-center font-Abnes text-5xl">About</Link>
                         </li>
                         <li>
                             <Link href="#" onClick={toggleDisplayOffering} className="flex items-start gap-10 text-white text-center font-Abnes">
@@ -71,22 +71,22 @@ export default function Nav(props: NavigationInterface) {
                             <div className={`dropdown ${displayOffering ? "display pt-5" : ""}`}>
                                 <ul>
                                     <li>
-                                        <Link href="/corporate" className="text-2xl leading-loose font-Abnes text-white text-opacity-70 mb-5 block">Corporate</Link>
+                                        <Link href="/" className="text-2xl leading-loose font-Abnes text-white text-opacity-70 mb-5 block">Corporate</Link>
                                     </li>
                                     <li>
-                                        <Link href="/production" className="text-2xl mb-5 leading-loose font-Abnes text-white text-opacity-70 block">Production</Link>
+                                        <Link href="/" className="text-2xl mb-5 leading-loose font-Abnes text-white text-opacity-70 block">Production</Link>
                                     </li>
                                     <li>
-                                        <Link href="/talent" className="text-2xl leading-loose font-Abnes text-white text-opacity-70 block">Talent</Link>
+                                        <Link href="/" className="text-2xl leading-loose font-Abnes text-white text-opacity-70 block">Talent</Link>
                                     </li>
                                 </ul>
                             </div>
                         </li>
                         <li>
-                            <Link href="/project" className="text-white font-Abnes text-center text-5xl">Project</Link>
+                            <Link href="/" className="text-white font-Abnes text-center text-5xl">Project</Link>
                         </li>
                         <li>
-                            <Link href="/blog" className="text-white font-Abnes text-center text-5xl">Blog</Link>
+                            <Link href="/" className="text-white font-Abnes text-center text-5xl">Blog</Link>
                         </li>
                         {/* <li>
                             <Link href="/consulting" className="text-white font-Abnes text-center text-5xl">Consulting</Link>

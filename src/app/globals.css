@@ -259,6 +259,10 @@ h6 {
   transform: translate(-50%, -50%);
   height: 100vh;
   width: auto;
+
+  height: auto;
+  width: 100vw;
+  object-fit: cover;
 }
 
 .ant-drawer-content-wrapper {

@@ -234,11 +234,22 @@ h6 {
 
 
 .home-hero {
-  background: url("/assets/images/hero.png");
+  /* background: url("/assets/images/hero.png"); */
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center top;
   height: 100vh;
+}
+
+.home-hero video {
+  height: 56.25vw;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translate3d(-50%, -50%, 10px);
+  transform: translate3d(-50%, -50%, 10px);
+  width: 100vw;
+  z-index: 1;
 }
 
 .ant-drawer-content-wrapper {

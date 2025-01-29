@@ -71,7 +71,7 @@ const TalentPage = () => {
                         <h2 className="text-9xl text-white text-center font-black leading-none">CREATE <br /><span className="text-accent">GROW</span> <br /> THRIVE</h2>
                     </div>
                 </div>
-                <div className="mt-40">
+                <div className="mt-24">
                     <div id="services" className="py-30">
                         <div className="container">
                             <div className="flex flex-col md:grid grid-cols-2 gap-20 md:gap-20">

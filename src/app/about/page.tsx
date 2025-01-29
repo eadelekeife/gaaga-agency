@@ -26,6 +26,11 @@ import Img3 from "@/assets/images/home/brands/_3.svg";
 import Img4 from "@/assets/images/home/brands/_4.svg";
 import Img5 from "@/assets/images/home/brands/_5.svg";
 
+import Author1 from "@/assets/images/about/author.svg";
+import Author2 from "@/assets/images/about/author2.svg";
+import Author3 from "@/assets/images/about/author3.svg";
+
+
 import RightImg from "@/assets/images/icons/right.svg";
 import LeftImg from "@/assets/images/icons/left.svg";
 
@@ -114,7 +119,7 @@ const AboutUsPage = () => {
                             </div>
                         </div>
                     </div>
-                    <img src={AbtImg.src} alt="talent" width={0} height={0} className="mt-10 w-full h-full object-cover object-center" />
+                    <Image src={AbtImg} alt="talent" className="mt-10 w-full h-full object-cover object-center" />
                     <div className="px-20">
                         <div className="mt-20">
                             <div className="w-[90%] mx-auto px-5 mt-15">
@@ -328,30 +333,30 @@ const AboutUsPage = () => {
                         <p className="max-w-[1376px] mx-auto text-white leading-loose mt-5">He is what we would call a Super Influencer</p>
                         <div className="mt-20">
                             <h3 className="text-white font-black text-white text-4xl">Meet the team</h3>
-                            <div className="grid grid-cols-3 gap-20 mt-10">
+                            <div className="grid grid-cols-3 gap-16 mt-10">
                                 <div>
-                                    <div className="w-full h-[20rem] bg-[#5F5F5F]">
-
+                                    <div className="w-full">
+                                        <Image src={Author1} alt="our team image" className="w-full h-full object-cover object-center" />
                                     </div>
-                                    <div className="mt-5">
+                                    <div className="mt-1">
                                         <h5 className="font-singolare text-[#5F5F5F] text-base mb-1">Position</h5>
                                         <h3 className="font-singolare text-white text-xl font-black">Full Name</h3>
                                     </div>
                                 </div>
                                 <div>
-                                    <div className="w-full h-[20rem] bg-[#5F5F5F]">
-
+                                    <div className="w-full">
+                                        <Image src={Author2} alt="our team image" className="w-full h-full object-cover object-center" />
                                     </div>
-                                    <div className="mt-5">
+                                    <div className="mt-1">
                                         <h5 className="font-singolare text-[#5F5F5F] text-base mb-1">Position</h5>
                                         <h3 className="font-singolare text-white text-xl font-black">Full Name</h3>
                                     </div>
                                 </div>
                                 <div>
-                                    <div className="w-full h-[20rem] bg-[#5F5F5F]">
-
+                                    <div className="w-full">
+                                        <Image src={Author3} alt="our team image" className="w-full h-full object-cover object-center" />
                                     </div>
-                                    <div className="mt-5">
+                                    <div className="mt-1">
                                         <h5 className="font-singolare text-[#5F5F5F] text-base mb-1">Position</h5>
                                         <h3 className="font-singolare text-white text-xl font-black">Full Name</h3>
                                     </div>

@@ -71,7 +71,7 @@ export default function Nav(props: NavigationInterface) {
                             <div className={`dropdown ${displayOffering ? "display pt-5" : ""}`}>
                                 <ul>
                                     <li>
-                                        <Link href="/" className="text-2xl leading-loose font-Abnes text-white text-opacity-70 mb-5 block">Corporate</Link>
+                                        <Link href="/corporate" className="text-2xl leading-loose font-Abnes text-white text-opacity-70 mb-5 block">Corporate</Link>
                                     </li>
                                     <li>
                                         <Link href="/production" className="text-2xl mb-5 leading-loose font-Abnes text-white text-opacity-70 block">Production</Link>

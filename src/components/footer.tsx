@@ -5,22 +5,22 @@
 import Link from "next/link";
 // import { useEffect } from "react";
 
-import LogoWhiteImg from "@/assets/images/logo-white.svg";
+import LogoWhiteImg from "@/assets/images/gaaga-white.png";
 import Image from "next/image";
 
 export default function Footer(props: { noMargin?: boolean }) {
     return (
         <div className={`bg-[#02070E] ${props.noMargin ? "" : "mt-40"}`}>
             <div className="px-32">
-                <div className="flex flex-col md:grid grid-cols-1/1.5 gap-y-20 md:gap-y-10 gap-x-28 pt-24">
+                <div className="flex flex-col md:grid grid-cols-1/2 gap-y-20 md:gap-y-10 gap-x-28 pt-24">
                     <div className="w-max">
-                        <Image width={0} height={0} src={LogoWhiteImg} alt="LogoBlackImg" className="logo" />
+                        <Image width={0} height={0} src={LogoWhiteImg} alt="LogoBlackImg" className="w-auto h-[1.3rem] logo" />
                         <div className="mt-7">
-                            <p className="text-white text-">Collaboration platform <br /> for modern team</p>
+                            <p className="text-white opacity-60">Collaboration platform <br /> for modern team</p>
                         </div>
                     </div>
                     <div>
-                        <div className="grid grid-cols-2 md:grid-cols-3 gap-10">
+                        <div className="grid grid-cols-2 md:grid-cols-1/1/2 gap-20">
                             <div>
                                 <h5 className="text-white font-singolare">Contact Us</h5>
                                 <ul className="mt-7">
@@ -59,7 +59,13 @@ export default function Footer(props: { noMargin?: boolean }) {
                                 <div className="mt-16">
                                     <div className="">
                                         <label htmlFor="" className="text-white text-opacity-[54%] text-sm mb-2 block">Email</label>
-                                        <input className="rounded-lg w-full" style={{ height: "4rem", background: "rgba(255,255,255,.2)" }} />
+                                        <div className="flex items-center rounded-lg px-3 bg-[#35393E]" style={{ height: "4rem" }}>
+                                            <input type="text" className="w-full flex-1 bg-[#35393E]"
+                                                style={{ height: "4rem" }} />
+                                            <div>
+                                                <button className="bg-accent py-3 px-4 text-black text-sm rounded-lg">Subscribe</button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

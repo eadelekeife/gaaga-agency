@@ -29,7 +29,6 @@ const TalentPage = () => {
         }
     }
 
-    let currIndex = useRef<any>([]);
     const [activeIndex, setActiveIndex] = useState<number>(0);
     const swiperRef = useRef<any>(null);
 

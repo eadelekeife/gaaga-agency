@@ -10,7 +10,7 @@ import Link from "next/link";
 
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -84,7 +84,7 @@ const AboutUsPage = () => {
         if (containerRef.current) {
             containerRef.current.style.height = "2400px";
 
-            let tl = gsap.timeline({
+            const tl = gsap.timeline({
                 scrollTrigger: {
                     trigger: containerRef.current,
                     pin: true,
@@ -94,14 +94,14 @@ const AboutUsPage = () => {
                     markers: true,
                     onUpdate: (self) => {
                         if (containerRef.current) {
-                            const progress = self.progress; // From 0 to 1
-                            const initialHeight = 2400; // Total height before animation
-                            const finalHeight = 400; // Height after animation ends (last box visible)
+                            // const progress = self.progress; // From 0 to 1
+                            // const initialHeight = 2400; // Total height before animation
+                            // const finalHeight = 400; // Height after animation ends (last box visible)
                             // containerRef.current.style.height = `${initialHeight - progress * (initialHeight - finalHeight)}px`;
                             containerRef.current.style.height = `2400px`;
 
                             const pinSpacer = containerRef.current.parentNode; // pin-spacer is the parent of the pinned element
-                            const visibleHeight = 1500; // Height of the visible animated content
+                            // const visibleHeight = 1500; // Height of the visible animated content
                             if (pinSpacer && pinSpacer instanceof HTMLElement) {
                                 pinSpacer.style.height = `2400px`;
                             }

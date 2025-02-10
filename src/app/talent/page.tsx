@@ -68,7 +68,7 @@ const TalentPage = () => {
         if (containerRef.current) {
             containerRef.current.style.height = "2400px";
 
-            let tl = gsap.timeline({
+            const tl = gsap.timeline({
                 scrollTrigger: {
                     trigger: containerRef.current,
                     pin: true,
@@ -76,7 +76,7 @@ const TalentPage = () => {
                     end: "bottom bottom",
                     scrub: true,
                     markers: true,
-                    onUpdate: (self) => {
+                    onUpdate: () => {
                         if (containerRef.current) {
                             // const progress = self.progress; // From 0 to 1
                             // const initialHeight = 2400; // Total height before animation

@@ -3,6 +3,8 @@
 import LayoutDisplay from "@/components/layout";
 // import Image from "next/image";
 
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import TalentImg from "@/assets/images/talent/talent-hero.svg";
 import ManImg from "@/assets/images/talent/why_1.png";
 import Link from "next/link";
@@ -16,9 +18,10 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import { Swiper as SwiperType } from 'swiper';
 
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 
 const TalentPage = () => {
+
     const breakpoints = {
         0: {
             slidesPerView: 1
@@ -30,6 +33,13 @@ const TalentPage = () => {
             slidesPerView: 1
         }
     }
+
+    const box1Ref = useRef<HTMLDivElement>(null);
+    const box2Ref = useRef<HTMLDivElement>(null);
+    const box3Ref = useRef<HTMLDivElement>(null);
+
+    const containerRef = useRef<HTMLDivElement>(null);
+
 
     const [activeIndex, setActiveIndex] = useState<number>(0);
     const swiperRef = useRef<SwiperType | null>(null);
@@ -51,6 +61,53 @@ const TalentPage = () => {
             swiperRef.current.slideNext();
         }
     };
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    useEffect(() => {
+        if (containerRef.current) {
+            containerRef.current.style.height = "2400px";
+
+            let tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: containerRef.current,
+                    pin: true,
+                    start: "top top",
+                    end: "bottom bottom",
+                    scrub: true,
+                    markers: true,
+                    onUpdate: (self) => {
+                        if (containerRef.current) {
+                            const progress = self.progress; // From 0 to 1
+                            const initialHeight = 2400; // Total height before animation
+                            const finalHeight = 400; // Height after animation ends (last box visible)
+                            // containerRef.current.style.height = `${initialHeight - progress * (initialHeight - finalHeight)}px`;
+                            containerRef.current.style.height = `2400px`;
+
+                            const pinSpacer = containerRef.current.parentNode; // pin-spacer is the parent of the pinned element
+                            const visibleHeight = 1500; // Height of the visible animated content
+                            if (pinSpacer && pinSpacer instanceof HTMLElement) {
+                                pinSpacer.style.height = `2400px`;
+                            }
+                        }
+                    }
+                }
+            });
+            tl.to(box1Ref.current, {
+                top: "60px",
+                ease: "power2.inOut",
+            }, 0);
+            tl.to(box2Ref.current, {
+                top: "120px",
+                ease: "power2.inOut"
+            }, 0.2)
+            // Cleanup on unmount
+            return () => {
+                if (tl.scrollTrigger) tl.scrollTrigger.kill();
+                tl.kill();
+            };
+        }
+    }, []);
 
     return (
         <div>
@@ -204,61 +261,72 @@ const TalentPage = () => {
                     <div className="talent bg-[#F5F7FA] pb-20">
                         <div className="px-32 pt-20">
                             <h3 className="text-black text-5xl mb-20">What We Offer</h3>
-                            <div className="grid grid-cols-5/1">
-                                <div className="grid grid-cols-2/1 bg-[#E7E3D8] items-center">
-                                    <div>
-                                        <div className="w-[75%] mx-auto pt-15 pb-15">
-                                            <h3 className="text-2xl mb-7 text-black font-black">Content Creation</h3>
-                                            <p className="text-black leading-snug text-base max-w-[532px]">We produce high quality content tailored to the creative needs, goals and target audience. This could involve filming, designing, and recording contents.
-                                            </p>
-                                            <p className="text-black leading-snug text-base max-w-[532px] mt-5">
-                                                We have high level production equipment at our disposal to match any content needed.
-                                            </p>
+                            <div ref={containerRef} className={`overflow-hidden relative mt-16`}>
+                                <div
+                                    className="opacity- absolute top-[0px] h-[380px]">
+                                    <div className="grid grid-cols-5/1">
+                                        <div className="grid grid-cols-2/1 bg-[#E7E3D8] items-center">
+                                            <div>
+                                                <div className="w-[75%] mx-auto pt-15 pb-15">
+                                                    <h3 className="text-2xl mb-7 text-black font-black">Content Creation</h3>
+                                                    <p className="text-black leading-snug text-base max-w-[532px]">We produce high quality content tailored to the creative needs, goals and target audience. This could involve filming, designing, and recording contents.
+                                                    </p>
+                                                    <p className="text-black leading-snug text-base max-w-[532px] mt-5">
+                                                        We have high level production equipment at our disposal to match any content needed.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div className="talent-1">
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div className="talent-1">
+                                        <div></div>
                                     </div>
                                 </div>
-                                <div></div>
-                            </div>
-                            <div className="grid grid-cols-1/5">
-                                <div></div>
-                                <div className="grid grid-cols-2/1 bg-[#99D2DB] items-center">
-                                    <div>
-                                        <div className="w-[75%] mx-auto pt-15 pb-15">
-                                            <h3 className="text-2xl mb-7 text-black font-black">Content Strategy</h3>
-                                            <p className="text-black leading-snug text-base max-w-[532px]">
-                                                We offer expert guidance in developing content ideas that resonate with your
-                                                audience. Our tool includes trend analysis, audience insights, and creative brainstorming
-                                                sessions to craft impactful content strategies
-                                            </p>
-                                            <p className="text-black leading-snug text-base max-w-[532px] mt-5">
-                                                Benefit: Stay ahead of trends and create content that engages and grows your audience.
-                                            </p>
+                                <div
+                                    className="opacity- absolute top-[400px] h-[380px]">
+                                    <div className="grid grid-cols-1/5" ref={box1Ref}>
+                                        <div></div>
+                                        <div className="grid grid-cols-2/1 bg-[#99D2DB] items-center">
+                                            <div>
+                                                <div className="w-[75%] mx-auto pt-15 pb-15">
+                                                    <h3 className="text-2xl mb-7 text-black font-black">Content Strategy</h3>
+                                                    <p className="text-black leading-snug text-base max-w-[532px]">
+                                                        We offer expert guidance in developing content ideas that resonate with your
+                                                        audience. Our tool includes trend analysis, audience insights, and creative brainstorming
+                                                        sessions to craft impactful content strategies
+                                                    </p>
+                                                    <p className="text-black leading-snug text-base max-w-[532px] mt-5">
+                                                        Benefit: Stay ahead of trends and create content that engages and grows your audience.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div className="talent-2">
+                                            </div>
                                         </div>
                                     </div>
-                                    <div className="talent-2">
-                                    </div>
                                 </div>
-                            </div>
-                            <div className="grid grid-cols-5/1">
-                                <div className="grid grid-cols-2/1 bg-[#FFCF53] items-center">
-                                    <div>
-                                        <div className="w-[75%] mx-auto pt-15 pb-15">
-                                            <h3 className="text-2xl mb-7 text-black font-black">Production Support</h3>
-                                            <p className="text-black leading-snug text-base max-w-[532px]">
-                                                Access to state-of-the-art production resources, including high-quality filming equipment, editing software, and
-                                                technical support. We assist in producing content that meets professional standards.
-                                            </p>
-                                            <p className="text-black leading-snug text-base max-w-[532px] mt-5">
-                                                Benefit: Elevate the quality of your content with professional production values.
-                                            </p>
+                                <div
+                                    className="opacity- absolute top-[800px] h-[380px]">
+                                    <div className="grid grid-cols-5/1" ref={box2Ref}>
+                                        <div className="grid grid-cols-2/1 bg-[#FFCF53] items-center">
+                                            <div>
+                                                <div className="w-[75%] mx-auto pt-15 pb-15">
+                                                    <h3 className="text-2xl mb-7 text-black font-black">Production Support</h3>
+                                                    <p className="text-black leading-snug text-base max-w-[532px]">
+                                                        Access to state-of-the-art production resources, including high-quality filming equipment, editing software, and
+                                                        technical support. We assist in producing content that meets professional standards.
+                                                    </p>
+                                                    <p className="text-black leading-snug text-base max-w-[532px] mt-5">
+                                                        Benefit: Elevate the quality of your content with professional production values.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div className="talent-3">
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div className="talent-3">
+                                        <div></div>
                                     </div>
                                 </div>
-                                <div></div>
                             </div>
                         </div>
                     </div>

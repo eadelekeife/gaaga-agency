@@ -8,10 +8,9 @@ import LarryImg from "@/assets/images/larry.png";
 // import ManImg from "@/assets/images/man.png";
 import Link from "next/link";
 
-// import gsap, { Power0 } from "gsap";
-// import { ScrollTrigger } from "gsap/ScrollTrigger";
-// import { useEffect, useRef } from "react";
-import { useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useEffect, useRef, useState } from "react";
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -44,8 +43,14 @@ import LeftImg from "@/assets/images/icons/left.svg";
 
 const AboutUsPage = () => {
 
-    const firstRef = useRef(null);
     const secRef = useRef(null);
+    const box2Ref = useRef<HTMLDivElement>(null);
+    const box3Ref = useRef<HTMLDivElement>(null);
+    const box4Ref = useRef<HTMLDivElement>(null);
+    const box5Ref = useRef<HTMLDivElement>(null);
+    const box6Ref = useRef<HTMLDivElement>(null);
+
+    const containerRef = useRef<HTMLDivElement>(null);
 
     const swiperRef = useRef<SwiperCore | null>(null);
 
@@ -73,38 +78,65 @@ const AboutUsPage = () => {
         }
     }
 
-    // gsap.registerPlugin(ScrollTrigger);
-    // useEffect(() => {
-    //     // Set up GSAP ScrollTrigger with pinning
-    //     ScrollTrigger.create({
-    //         trigger: firstRef.current,     // Element to trigger the animation
-    //         start: "top top",            // Animation start point in viewport
-    //         end: "+=300",                 // Duration of the "hold" effect
-    //         pin: true,                      // Pins the section in place
-    //         markers: true,
-    //         pinSpacing: false,              // Avoids additional spacing when unpinned
-    //     });
+    gsap.registerPlugin(ScrollTrigger);
 
-    //     gsap.to(secRef.current, {
-    //         scrollTrigger: {
-    //             trigger: firstRef.current,
-    //             start: "top center",
-    //             end: "top 100px", // Controls when the animation stops
-    //             // scrub: true,      // Allows smooth scrubbing up to end position
-    //             toggleActions: "play none none none", // Plays only once, holds position
-    //             markers: true,
-    //         },
-    //         y: -5,               // Set target y value
-    //         opacity: 1,
-    //         duration: 1,
-    //         ease: "power3.out"
-    //     })
+    useEffect(() => {
+        if (containerRef.current) {
+            containerRef.current.style.height = "2400px";
 
-    //     return () => {
-    //         // Clean up on component unmount
-    //         ScrollTrigger.killAll();
-    //     };
-    // }, []);
+            let tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: containerRef.current,
+                    pin: true,
+                    start: "top top",
+                    end: "bottom bottom",
+                    scrub: true,
+                    markers: true,
+                    onUpdate: (self) => {
+                        if (containerRef.current) {
+                            const progress = self.progress; // From 0 to 1
+                            const initialHeight = 2400; // Total height before animation
+                            const finalHeight = 400; // Height after animation ends (last box visible)
+                            // containerRef.current.style.height = `${initialHeight - progress * (initialHeight - finalHeight)}px`;
+                            containerRef.current.style.height = `2400px`;
+
+                            const pinSpacer = containerRef.current.parentNode; // pin-spacer is the parent of the pinned element
+                            const visibleHeight = 1500; // Height of the visible animated content
+                            if (pinSpacer && pinSpacer instanceof HTMLElement) {
+                                pinSpacer.style.height = `2400px`;
+                            }
+                        }
+                    }
+                }
+            });
+            tl.to(box2Ref.current, {
+                top: "60px",
+                ease: "power2.inOut",
+            }, 0);
+            tl.to(box3Ref.current, {
+                top: "120px",
+                ease: "power2.inOut"
+            }, 0.2)
+            tl.to(box4Ref.current, {
+                top: "180px",
+                ease: "power2.inOut"
+            }, 0.4)
+            tl.to(box5Ref.current, {
+                top: "240px",
+                ease: "power2.inOut"
+            }, 0.6)
+            tl.to(box6Ref.current, {
+                top: "300px",
+                ease: "power2.inOut"
+            }, 0.8)
+            // Cleanup on unmount
+            return () => {
+                if (tl.scrollTrigger) tl.scrollTrigger.kill();
+                tl.kill();
+            };
+        }
+    }, []);
+
     return (
         <div>
             <LayoutDisplay>
@@ -131,129 +163,142 @@ const AboutUsPage = () => {
                                     the burden of content production, this service allows you to focus on your creativity and growth, leaving the
                                     intricacies of content creation and marketing to us.
                                 </p>
-                                <div ref={firstRef}>
+                                <div className="relative overflow-hidden">
                                     <p className="text-base text-white leading-loose mt-10 mx-auto max-w-[1203px]">
                                         The Creator Support Tool is an innovative platform designed to empower creators with comprehensive assistance
                                         in content creation, brand collaboration, and career advancement. This tool is a one-stop solution that provides
                                         tailored support to meet the diverse needs of creative professionals. Whether you&apos;re just starting out or are
                                         an established creator, our tailored support system is here to elevate your journey.
                                     </p>
-                                    <div className="mt-10">
-                                        <div className="grid grid-cols-5/1">
-                                            <div className="grid grid-cols-2/1 bg-[#E7E3D8] items-center">
-                                                <div>
-                                                    <div className="w-[75%] mx-auto pt-16 pb-15">
-                                                        <h3 className="text-3xl mb-8 text-black font-black">Our Story</h3>
-                                                        <p className="text-black leading-loose md:leading-loose text-base">Who We Are: Gaaga Agency, based in the
-                                                            heart of Lagos, Nigeria, is a pioneer in blending entertainment, culture, and
-                                                            marketing into a cohesive and dynamic force. Founded by the visionary Larry Gaaga, we
-                                                            have grown from a group of enthusiastic professionals into a leading agency in the
-                                                            digital marketing and talent management space.
-                                                        </p>
+                                    <div ref={containerRef} className={`overflow-hidden relative mt-16`}>
+                                        <div
+                                            className="absolute top-0 h-[380px]">
+                                            {/* ref={coverRef}> */}
+                                            {/* ref={box1Ref}> */}
+                                            <div className="grid grid-cols-5/1">
+                                                <div className="grid grid-cols-2/1 bg-[#E7E3D8] items-center">
+                                                    <div>
+                                                        <div className="w-[75%] mx-auto pt-16 pb-15">
+                                                            <h3 className="text-3xl mb-8 text-black font-black">Our Story</h3>
+                                                            <p className="text-black leading-loose md:leading-loose text-base">Who We Are: Gaaga Agency, based in the
+                                                                heart of Lagos, Nigeria, is a pioneer in blending entertainment, culture, and
+                                                                marketing into a cohesive and dynamic force. Founded by the visionary Larry Gaaga, we
+                                                                have grown from a group of enthusiastic professionals into a leading agency in the
+                                                                digital marketing and talent management space.
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <div className="talent-1">
                                                     </div>
                                                 </div>
-                                                <div className="talent-1">
-                                                </div>
-                                            </div>
-                                            <div></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div ref={secRef}>
-                                    <div className="grid grid-cols-1/5" ref={secRef}>
-                                        <div></div>
-                                        <div className="grid grid-cols-2/1 bg-[#99D2DB] items-center">
-                                            <div>
-                                                <div className="w-[75%] mx-auto pt-16 pb-15">
-                                                    <h3 className="text-3xl mb-8 text-black font-black">Our Journey</h3>
-                                                    <p className="text-black leading-loose md:leading-loose text-base">
-                                                        Our story began with a simple yet powerful vision - to bridge the gap between emerging
-                                                        markets and brands through the universal language of entertainment and pop culture. Recognizing
-                                                        the potential in Nigeria&apos;s vibrant youth and rich cultural heritage, we embarked on a mission
-                                                        to create marketing strategies and campaigns that resonate on a deeper level.
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div className="talent-2">
+                                                <div></div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                                <div ref={secRef}>
-                                    <div className="grid grid-cols-5/1" ref={secRef}>
-                                        <div className="grid grid-cols-2/1 bg-[#FFCF53] items-center">
-                                            <div>
-                                                <div className="w-[75%] mx-auto pt-16 pb-15">
-                                                    <h3 className="text-3xl mb-8 text-black font-black">What We Do</h3>
-                                                    <p className="text-black leading-loose md:leading-loose text-base">
-                                                        Gaaga Agency operates at the intersection of talent management and brand marketing. Our
-                                                        expertise spans across nurturing individual talents in the entertainment industry and
-                                                        crafting compelling brand narratives. We pride ourselves on our ability to create cultural
-                                                        connections that leave a lasting impact.
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div className="talent-3">
-                                            </div>
-                                        </div>
-                                        <div></div>
-                                    </div>
-                                </div>
-                                <div ref={secRef}>
-                                    <div className="grid grid-cols-1/5" ref={secRef}>
-                                        <div></div>
-                                        <div className="grid grid-cols-1/2 bg-[#446B94] items-center">
-                                            <div className="talent-4">
-                                            </div>
-                                            <div>
-                                                <div className="w-[75%] mx-auto pt-16 pb-15">
-                                                    <h3 className="text-3xl mb-8 text-black font-black">Talent Management</h3>
-                                                    <p className="text-black leading-loose md:leading-loose text-base">
-                                                        Nurturing Creative Excellence: Our Talent Management division is dedicated to discovering, developing, and
-                                                        promoting talents across various entertainment sectors. We believe in the transformative power of talent
-                                                        and work tirelessly to provide opportunities that align with our clients&apos; growth and aspirations. From
-                                                        music placement to event production, our team is skilled in elevating talents to new heights.
-                                                    </p>
+                                        <div
+                                            className="absolute top-[400px] h-[380px]"
+                                            ref={box2Ref}>
+                                            <div className="grid grid-cols-1/5" ref={secRef}>
+                                                <div></div>
+                                                <div className="grid grid-cols-2/1 bg-[#99D2DB] items-center">
+                                                    <div>
+                                                        <div className="w-[75%] mx-auto pt-16 pb-15">
+                                                            <h3 className="text-3xl mb-8 text-black font-black">Our Journey</h3>
+                                                            <p className="text-black leading-loose md:leading-loose text-base">
+                                                                Our story began with a simple yet powerful vision - to bridge the gap between emerging
+                                                                markets and brands through the universal language of entertainment and pop culture. Recognizing
+                                                                the potential in Nigeria&apos;s vibrant youth and rich cultural heritage, we embarked on a mission
+                                                                to create marketing strategies and campaigns that resonate on a deeper level.
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <div className="talent-2">
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                                <div ref={secRef}>
-                                    <div className="grid grid-cols-5/1" ref={secRef}>
-                                        <div className="grid grid-cols-1/2 bg-[#F04D3A] items-center">
-                                            <div className="talent-5">
+                                        <div
+                                            className="opacity- absolute top-[800px] h-[380px]"
+                                            ref={box3Ref}>
+                                            <div className="grid grid-cols-5/1" ref={secRef}>
+                                                <div className="grid grid-cols-2/1 bg-[#FFCF53] items-center">
+                                                    <div>
+                                                        <div className="w-[75%] mx-auto pt-16 pb-15">
+                                                            <h3 className="text-3xl mb-8 text-black font-black">What We Do</h3>
+                                                            <p className="text-black leading-loose md:leading-loose text-base">
+                                                                Gaaga Agency operates at the intersection of talent management and brand marketing. Our
+                                                                expertise spans across nurturing individual talents in the entertainment industry and
+                                                                crafting compelling brand narratives. We pride ourselves on our ability to create cultural
+                                                                connections that leave a lasting impact.
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <div className="talent-3">
+                                                    </div>
+                                                </div>
+                                                <div></div>
                                             </div>
-                                            <div>
-                                                <div className="w-[75%] mx-auto pt-16 pb-15">
-                                                    <h3 className="text-3xl mb-8 text-black font-black">Our Philosophy</h3>
-                                                    <p className="text-black leading-loose md:leading-loose text-base">
-                                                        At Gaaga Agency, we believe in the power of collaboration, creativity, and innovation. Our
-                                                        work is fueled by a passion for what we do and a deep understanding of the markets we
-                                                        serve. We are committed to delivering excellence and driving success for our clients.
-                                                    </p>
+                                        </div>
+                                        <div
+                                            className="opacity- absolute top-[1200px] h-[380px]"
+                                            ref={box4Ref}>
+                                            <div className="grid grid-cols-1/5" ref={secRef}>
+                                                <div></div>
+                                                <div className="grid grid-cols-1/2 bg-[#446B94] items-center">
+                                                    <div className="talent-4">
+                                                    </div>
+                                                    <div>
+                                                        <div className="w-[75%] mx-auto pt-16 pb-15">
+                                                            <h3 className="text-3xl mb-8 text-black font-black">Talent Management</h3>
+                                                            <p className="text-black leading-loose md:leading-loose text-base">
+                                                                Nurturing Creative Excellence: Our Talent Management division is dedicated to discovering, developing, and
+                                                                promoting talents across various entertainment sectors. We believe in the transformative power of talent
+                                                                and work tirelessly to provide opportunities that align with our clients&apos; growth and aspirations. From
+                                                                music placement to event production, our team is skilled in elevating talents to new heights.
+                                                            </p>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div></div>
-                                    </div>
-                                </div>
-                                <div ref={secRef}>
-                                    <div className="grid grid-cols-1/5" ref={secRef}>
-                                        <div></div>
-                                        <div className="grid grid-cols-2/1 bg-[#C68100] items-center">
-                                            <div>
-                                                <div className="w-[75%] mx-auto pt-16 pb-15">
-                                                    <h3 className="text-3xl mb-8 text-black font-black">Looking Ahead</h3>
-                                                    <p className="text-black leading-loose md:leading-loose text-base">
-                                                        As we continue to grow, our roots remain firmly planted in the rich soil of Nigerian
-                                                        culture. We are constantly evolving, embracing new technologies and strategies to stay
-                                                        ahead in an ever-changing landscape. Our commitment to our clients and talents is
-                                                        unwavering, and we look forward to forging new paths and achieving greater heights together.
-                                                    </p>
+                                        <div
+                                            className="absolute top-[1600px] h-[380px]"
+                                            ref={box5Ref}>
+                                            <div className="grid grid-cols-5/1" ref={secRef}>
+                                                <div className="grid grid-cols-1/2 bg-[#F04D3A] items-center">
+                                                    <div className="talent-5">
+                                                    </div>
+                                                    <div>
+                                                        <div className="w-[75%] mx-auto pt-16 pb-15">
+                                                            <h3 className="text-3xl mb-8 text-black font-black">Our Philosophy</h3>
+                                                            <p className="text-black leading-loose md:leading-loose text-base">
+                                                                At Gaaga Agency, we believe in the power of collaboration, creativity, and innovation. Our
+                                                                work is fueled by a passion for what we do and a deep understanding of the markets we
+                                                                serve. We are committed to delivering excellence and driving success for our clients.
+                                                            </p>
+                                                        </div>
+                                                    </div>
                                                 </div>
+                                                <div></div>
                                             </div>
-                                            <div className="talent-6">
+                                        </div>
+                                        <div className="absolute top-[2000px] h-[380px]" ref={box6Ref}>
+                                            <div className="grid grid-cols-1/5" ref={secRef}>
+                                                <div></div>
+                                                <div className="grid grid-cols-2/1 bg-[#C68100] items-center">
+                                                    <div>
+                                                        <div className="w-[75%] mx-auto pt-16 pb-15">
+                                                            <h3 className="text-3xl mb-8 text-black font-black">Looking Ahead</h3>
+                                                            <p className="text-black leading-loose md:leading-loose text-base">
+                                                                As we continue to grow, our roots remain firmly planted in the rich soil of Nigerian
+                                                                culture. We are constantly evolving, embracing new technologies and strategies to stay
+                                                                ahead in an ever-changing landscape. Our commitment to our clients and talents is
+                                                                unwavering, and we look forward to forging new paths and achieving greater heights together.
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <div className="talent-6">
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

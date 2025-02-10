@@ -4,10 +4,11 @@
 import Link from "next/link";
 
 import Image from "next/image";
+import { useRouter } from "next/router";
 import LogoBlackImg from "../assets/images/sec_logo.svg";
 // import MenuSVG from "../assets/images/menu.svg";
 // import LogoWhiteImg from "../assets/images/logo-white.svg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Drawer } from "antd";
 import { IoMdArrowDropdown, IoMdArrowDropup } from "react-icons/io";
 
@@ -18,7 +19,9 @@ interface NavigationInterface {
     displayType?: "relative" | "absolute"
 }
 
-export default function Nav(props: NavigationInterface) {
+const Nav = (props: NavigationInterface) => {
+
+    const [currentPath, setCurrentPath] = useState("");
     // const [currentView, setCurrentView] = useState<any>("corporate");
     const [displayOffering, setDisplayOffering] = useState<boolean>(false);
     const [displayDrawer, setDisplayDrawer] = useState(false);
@@ -28,6 +31,13 @@ export default function Nav(props: NavigationInterface) {
 
     const toggleDisplayNavigation = () => setDisplayDrawer(!displayDrawer);
     const toggleDisplayOffering = () => setDisplayOffering(!displayOffering);
+
+    useEffect(() => {
+        // Ensure it's running in the browser
+        if (typeof window !== "undefined") {
+            setCurrentPath(window.location.pathname);
+        }
+    }, []);
 
     return (
         <div className={`navigation pt-7 ${props.bgColor ? "dark" : ""} ${props.displayType === "absolute" ? `${props.displayType} top-0 w-full` : "relative"}`}
@@ -52,10 +62,10 @@ export default function Nav(props: NavigationInterface) {
                 <div className="menu-box">
                     <ul className="text-center flex flex-col gap-5">
                         <li>
-                            <Link href="/" className="text-white text-center font-Abnes text-5xl">Home</Link>
+                            <Link onClick={toggleDisplayNavigation} href="/" className={`${currentPath === "/" ? "opacity-60" : ""} text-white text-center font-Abnes text-5xl`}>Home</Link>
                         </li>
                         <li>
-                            <Link href="/about" className="text-white text-center font-Abnes text-5xl">About</Link>
+                            <Link onClick={toggleDisplayNavigation} href="/about" className={`${currentPath === "/about" ? "opacity-60" : ""} text-white text-center font-Abnes text-5xl`}>About</Link>
                         </li>
                         <li>
                             <Link href="#" onClick={toggleDisplayOffering} className="flex items-start gap-10 text-white text-center font-Abnes">
@@ -71,25 +81,25 @@ export default function Nav(props: NavigationInterface) {
                             <div className={`dropdown ${displayOffering ? "display pt-5" : ""}`}>
                                 <ul>
                                     <li>
-                                        <Link href="/corporate" className="text-2xl leading-loose font-Abnes text-white text-opacity-70 mb-5 block">Corporate</Link>
+                                        <Link onClick={toggleDisplayNavigation} href="/corporate" className={`${currentPath === "/corporate" ? "opacity-60" : ""} text-2xl leading-loose font-Abnes text-white text-opacity-70 mb-5 block`}>Corporate</Link>
                                     </li>
                                     <li>
-                                        <Link href="/production" className="text-2xl mb-5 leading-loose font-Abnes text-white text-opacity-70 block">Production</Link>
+                                        <Link onClick={toggleDisplayNavigation} href="/production" className={`${currentPath === "/production" ? "opacity-60" : ""} text-2xl mb-5 leading-loose font-Abnes text-white text-opacity-70 block`}>Production</Link>
                                     </li>
                                     <li>
-                                        <Link href="/talent" className="text-2xl leading-loose font-Abnes text-white text-opacity-70 block">Talent</Link>
+                                        <Link onClick={toggleDisplayNavigation} href="/talent" className={`${currentPath === "/talent" ? "opacity-60" : ""} text-2xl leading-loose font-Abnes text-white text-opacity-70 block`}>Talent</Link>
                                     </li>
                                 </ul>
                             </div>
                         </li>
                         <li>
-                            <Link href="/project" className="text-white font-Abnes text-center text-5xl">Project</Link>
+                            <Link onClick={toggleDisplayNavigation} href="/project" className={`${currentPath === "/project" ? "opacity-60" : ""} text-white font-Abnes text-center text-5xl`}>Project</Link>
                         </li>
                         <li>
-                            <Link href="/blog" className="text-white font-Abnes text-center text-5xl">Blog</Link>
+                            <Link onClick={toggleDisplayNavigation} href="/blog" className={`${currentPath === "/blog" ? "opacity-60" : ""} text-white font-Abnes text-center text-5xl`}>Blog</Link>
                         </li>
                         {/* <li>
-                            <Link href="/consulting" className="text-white font-Abnes text-center text-5xl">Consulting</Link>
+                            <Link href="/consulting" className={`${currentPath === "/" ? "opacity-60" : ""} text-white font-Abnes text-center text-5xl">Consulting</Link>
                         </li> */}
                     </ul>
                 </div>
@@ -97,3 +107,5 @@ export default function Nav(props: NavigationInterface) {
         </div>
     );
 }
+
+export default Nav;

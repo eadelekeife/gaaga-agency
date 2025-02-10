@@ -8,9 +8,9 @@ import LarryImg from "@/assets/images/larry.png";
 // import ManImg from "@/assets/images/man.png";
 import Link from "next/link";
 
-// import gsap from "gsap";
-// import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useEffect, useRef } from "react";
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -78,64 +78,64 @@ const AboutUsPage = () => {
         }
     }
 
-    // gsap.registerPlugin(ScrollTrigger);
+    gsap.registerPlugin(ScrollTrigger);
 
-    // useEffect(() => {
-    //     if (containerRef.current) {
-    //         containerRef.current.style.height = "2400px";
+    useEffect(() => {
+        if (containerRef.current) {
+            containerRef.current.style.height = "2400px";
 
-    //         const tl = gsap.timeline({
-    //             scrollTrigger: {
-    //                 trigger: containerRef.current,
-    //                 pin: true,
-    //                 start: "top top",
-    //                 end: "bottom bottom",
-    //                 scrub: true,
-    //                 markers: true,
-    //                 onUpdate: () => {
-    //                     if (containerRef.current) {
-    //                         // const progress = self.progress; // From 0 to 1
-    //                         // const initialHeight = 2400; // Total height before animation
-    //                         // const finalHeight = 400; // Height after animation ends (last box visible)
-    //                         // containerRef.current.style.height = `${initialHeight - progress * (initialHeight - finalHeight)}px`;
-    //                         containerRef.current.style.height = `2400px`;
+            const tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: containerRef.current,
+                    pin: true,
+                    start: "top top",
+                    end: "bottom bottom",
+                    scrub: true,
+                    markers: true,
+                    onUpdate: () => {
+                        if (containerRef.current) {
+                            // const progress = self.progress; // From 0 to 1
+                            // const initialHeight = 2400; // Total height before animation
+                            // const finalHeight = 400; // Height after animation ends (last box visible)
+                            // containerRef.current.style.height = `${initialHeight - progress * (initialHeight - finalHeight)}px`;
+                            containerRef.current.style.height = `2400px`;
 
-    //                         const pinSpacer = containerRef.current.parentNode; // pin-spacer is the parent of the pinned element
-    //                         // const visibleHeight = 1500; // Height of the visible animated content
-    //                         if (pinSpacer && pinSpacer instanceof HTMLElement) {
-    //                             pinSpacer.style.height = `2400px`;
-    //                         }
-    //                     }
-    //                 }
-    //             }
-    //         });
-    //         tl.to(box2Ref.current, {
-    //             top: "60px",
-    //             ease: "power2.inOut",
-    //         }, 0);
-    //         tl.to(box3Ref.current, {
-    //             top: "120px",
-    //             ease: "power2.inOut"
-    //         }, 0.2)
-    //         tl.to(box4Ref.current, {
-    //             top: "180px",
-    //             ease: "power2.inOut"
-    //         }, 0.4)
-    //         tl.to(box5Ref.current, {
-    //             top: "240px",
-    //             ease: "power2.inOut"
-    //         }, 0.6)
-    //         tl.to(box6Ref.current, {
-    //             top: "300px",
-    //             ease: "power2.inOut"
-    //         }, 0.8)
-    //         // Cleanup on unmount
-    //         return () => {
-    //             if (tl.scrollTrigger) tl.scrollTrigger.kill();
-    //             tl.kill();
-    //         };
-    //     }
-    // }, []);
+                            const pinSpacer = containerRef.current.parentNode; // pin-spacer is the parent of the pinned element
+                            // const visibleHeight = 1500; // Height of the visible animated content
+                            if (pinSpacer && pinSpacer instanceof HTMLElement) {
+                                pinSpacer.style.height = `2400px`;
+                            }
+                        }
+                    }
+                }
+            });
+            tl.to(box2Ref.current, {
+                top: "60px",
+                ease: "power2.inOut",
+            }, 0);
+            tl.to(box3Ref.current, {
+                top: "120px",
+                ease: "power2.inOut"
+            }, 0.2)
+            tl.to(box4Ref.current, {
+                top: "180px",
+                ease: "power2.inOut"
+            }, 0.4)
+            tl.to(box5Ref.current, {
+                top: "240px",
+                ease: "power2.inOut"
+            }, 0.6)
+            tl.to(box6Ref.current, {
+                top: "300px",
+                ease: "power2.inOut"
+            }, 0.8)
+            // Cleanup on unmount
+            return () => {
+                if (tl.scrollTrigger) tl.scrollTrigger.kill();
+                tl.kill();
+            };
+        }
+    }, []);
 
     return (
         <div>
@@ -172,7 +172,7 @@ const AboutUsPage = () => {
                                     </p>
                                     <div ref={containerRef} className={`overflow-hidden relative mt-16`}>
                                         <div
-                                            className="">
+                                            className="absolute top-0 h-[380px]">
                                             {/* ref={coverRef}> */}
                                             {/* ref={box1Ref}> */}
                                             <div className="grid grid-cols-5/1">
@@ -195,7 +195,7 @@ const AboutUsPage = () => {
                                             </div>
                                         </div>
                                         <div
-                                            className=""
+                                            className="absolute top-[400px] h-[380px]"
                                             ref={box2Ref}>
                                             <div className="grid grid-cols-1/5" ref={secRef}>
                                                 <div></div>
@@ -217,7 +217,7 @@ const AboutUsPage = () => {
                                             </div>
                                         </div>
                                         <div
-                                            className=""
+                                            className="opacity- absolute top-[800px] h-[380px]"
                                             ref={box3Ref}>
                                             <div className="grid grid-cols-5/1" ref={secRef}>
                                                 <div className="grid grid-cols-2/1 bg-[#FFCF53] items-center">
@@ -239,7 +239,7 @@ const AboutUsPage = () => {
                                             </div>
                                         </div>
                                         <div
-                                            className=""
+                                            className="opacity- absolute top-[1200px] h-[380px]"
                                             ref={box4Ref}>
                                             <div className="grid grid-cols-1/5" ref={secRef}>
                                                 <div></div>
@@ -261,7 +261,7 @@ const AboutUsPage = () => {
                                             </div>
                                         </div>
                                         <div
-                                            className=""
+                                            className="absolute top-[1600px] h-[380px]"
                                             ref={box5Ref}>
                                             <div className="grid grid-cols-5/1" ref={secRef}>
                                                 <div className="grid grid-cols-1/2 bg-[#F04D3A] items-center">
@@ -281,7 +281,7 @@ const AboutUsPage = () => {
                                                 <div></div>
                                             </div>
                                         </div>
-                                        <div className="" ref={box6Ref}>
+                                        <div className="absolute top-[2000px] h-[380px]" ref={box6Ref}>
                                             <div className="grid grid-cols-1/5" ref={secRef}>
                                                 <div></div>
                                                 <div className="grid grid-cols-2/1 bg-[#C68100] items-center">

@@ -92,7 +92,7 @@ const AboutUsPage = () => {
                     end: "bottom bottom",
                     scrub: true,
                     markers: true,
-                    onUpdate: (self) => {
+                    onUpdate: () => {
                         if (containerRef.current) {
                             // const progress = self.progress; // From 0 to 1
                             // const initialHeight = 2400; // Total height before animation

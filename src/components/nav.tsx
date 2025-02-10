@@ -61,10 +61,10 @@ const Nav = (props: NavigationInterface) => {
                 <div className="menu-box">
                     <ul className="text-center flex flex-col gap-5">
                         <li>
-                            <Link onClick={toggleDisplayNavigation} href="/" className={`${currentPath === "/" ? "opacity-60" : ""} text-white text-center font-Abnes text-5xl`}>Home</Link>
+                            <Link onClick={toggleDisplayNavigation} href="/" className={`${currentPath === "/" ? "text-[#6AA0B0]" : "text-white"} text-center font-Abnes text-5xl`}>Home</Link>
                         </li>
                         <li>
-                            <Link onClick={toggleDisplayNavigation} href="/about" className={`${currentPath === "/about" ? "opacity-60" : ""} text-white text-center font-Abnes text-5xl`}>About</Link>
+                            <Link onClick={toggleDisplayNavigation} href="/about" className={`${currentPath === "/about" ? "text-[#6AA0B0]" : "text-white"} text-center font-Abnes text-5xl`}>About</Link>
                         </li>
                         <li>
                             <Link href="#" onClick={toggleDisplayOffering} className="flex items-start gap-10 text-white text-center font-Abnes">
@@ -80,25 +80,25 @@ const Nav = (props: NavigationInterface) => {
                             <div className={`dropdown ${displayOffering ? "display pt-5" : ""}`}>
                                 <ul>
                                     <li>
-                                        <Link onClick={toggleDisplayNavigation} href="/corporate" className={`${currentPath === "/corporate" ? "opacity-60" : ""} text-2xl leading-loose font-Abnes text-white text-opacity-70 mb-5 block`}>Corporate</Link>
+                                        <Link onClick={toggleDisplayNavigation} href="/corporate" className={`${currentPath === "/corporate" ? "text-[#6AA0B0]" : "text-white"} text-2xl leading-loose font-Abnes mb-5 block`}>Corporate</Link>
                                     </li>
                                     <li>
-                                        <Link onClick={toggleDisplayNavigation} href="/production" className={`${currentPath === "/production" ? "opacity-60" : ""} text-2xl mb-5 leading-loose font-Abnes text-white text-opacity-70 block`}>Production</Link>
+                                        <Link onClick={toggleDisplayNavigation} href="/production" className={`${currentPath === "/production" ? "text-[#6AA0B0]" : "text-white"} text-2xl mb-5 leading-loose font-Abnes block`}>Production</Link>
                                     </li>
                                     <li>
-                                        <Link onClick={toggleDisplayNavigation} href="/talent" className={`${currentPath === "/talent" ? "opacity-60" : ""} text-2xl leading-loose font-Abnes text-white text-opacity-70 block`}>Talent</Link>
+                                        <Link onClick={toggleDisplayNavigation} href="/talent" className={`${currentPath === "/talent" ? "text-[#6AA0B0]" : "text-white"} text-2xl leading-loose font-Abnes block`}>Talent</Link>
                                     </li>
                                 </ul>
                             </div>
                         </li>
                         <li>
-                            <Link onClick={toggleDisplayNavigation} href="/project" className={`${currentPath === "/project" ? "opacity-60" : ""} text-white font-Abnes text-center text-5xl`}>Project</Link>
+                            <Link onClick={toggleDisplayNavigation} href="/project" className={`${currentPath === "/project" ? "text-[#6AA0B0]" : "text-white"} font-Abnes text-center text-5xl`}>Project</Link>
                         </li>
                         <li>
-                            <Link onClick={toggleDisplayNavigation} href="/blog" className={`${currentPath === "/blog" ? "opacity-60" : ""} text-white font-Abnes text-center text-5xl`}>Blog</Link>
+                            <Link onClick={toggleDisplayNavigation} href="/blog" className={`${currentPath === "/blog" ? "text-[#6AA0B0]" : "text-white"} font-Abnes text-center text-5xl`}>Blog</Link>
                         </li>
                         {/* <li>
-                            <Link href="/consulting" className={`${currentPath === "/" ? "opacity-60" : ""} text-white font-Abnes text-center text-5xl">Consulting</Link>
+                            <Link href="/consulting" className={`${currentPath === "/" ? "text-[#6AA0B0]" : ""} text-white font-Abnes text-center text-5xl">Consulting</Link>
                         </li> */}
                     </ul>
                 </div>

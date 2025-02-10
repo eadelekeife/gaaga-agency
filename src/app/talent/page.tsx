@@ -3,8 +3,6 @@
 import LayoutDisplay from "@/components/layout";
 // import Image from "next/image";
 
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import TalentImg from "@/assets/images/talent/talent-hero.svg";
 import ManImg from "@/assets/images/talent/why_1.png";
 import Link from "next/link";
@@ -61,53 +59,6 @@ const TalentPage = () => {
             swiperRef.current.slideNext();
         }
     };
-
-    gsap.registerPlugin(ScrollTrigger);
-
-    useEffect(() => {
-        if (containerRef.current) {
-            containerRef.current.style.height = "2400px";
-
-            const tl = gsap.timeline({
-                scrollTrigger: {
-                    trigger: containerRef.current,
-                    pin: true,
-                    start: "top top",
-                    end: "bottom bottom",
-                    scrub: true,
-                    markers: true,
-                    onUpdate: () => {
-                        if (containerRef.current) {
-                            // const progress = self.progress; // From 0 to 1
-                            // const initialHeight = 2400; // Total height before animation
-                            // const finalHeight = 400; // Height after animation ends (last box visible)
-                            // containerRef.current.style.height = `${initialHeight - progress * (initialHeight - finalHeight)}px`;
-                            containerRef.current.style.height = `2400px`;
-
-                            const pinSpacer = containerRef.current.parentNode; // pin-spacer is the parent of the pinned element
-                            // const visibleHeight = 1500; // Height of the visible animated content
-                            if (pinSpacer && pinSpacer instanceof HTMLElement) {
-                                pinSpacer.style.height = `2400px`;
-                            }
-                        }
-                    }
-                }
-            });
-            tl.to(box1Ref.current, {
-                top: "60px",
-                ease: "power2.inOut",
-            }, 0);
-            tl.to(box2Ref.current, {
-                top: "120px",
-                ease: "power2.inOut"
-            }, 0.2)
-            // Cleanup on unmount
-            return () => {
-                if (tl.scrollTrigger) tl.scrollTrigger.kill();
-                tl.kill();
-            };
-        }
-    }, []);
 
     return (
         <div>
@@ -263,7 +214,7 @@ const TalentPage = () => {
                             <h3 className="text-black text-5xl mb-20">What We Offer</h3>
                             <div ref={containerRef} className={`overflow-hidden relative mt-16`}>
                                 <div
-                                    className="opacity- absolute top-[0px] h-[380px]">
+                                    className="">
                                     <div className="grid grid-cols-5/1">
                                         <div className="grid grid-cols-2/1 bg-[#E7E3D8] items-center">
                                             <div>
@@ -283,7 +234,7 @@ const TalentPage = () => {
                                     </div>
                                 </div>
                                 <div
-                                    className="opacity- absolute top-[400px] h-[380px]">
+                                    className="">
                                     <div className="grid grid-cols-1/5" ref={box1Ref}>
                                         <div></div>
                                         <div className="grid grid-cols-2/1 bg-[#99D2DB] items-center">
@@ -306,7 +257,7 @@ const TalentPage = () => {
                                     </div>
                                 </div>
                                 <div
-                                    className="opacity- absolute top-[800px] h-[380px]">
+                                    className="">
                                     <div className="grid grid-cols-5/1" ref={box2Ref}>
                                         <div className="grid grid-cols-2/1 bg-[#FFCF53] items-center">
                                             <div>
